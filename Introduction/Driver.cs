@@ -1,36 +1,42 @@
 ﻿using Microsoft.Quantum.Simulation.Simulators;
-using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
+using Tools;
+using static System.Console;
 
-namespace Quantum.Introduction
+namespace Introduction
 {
     class Driver
     {
         static void Main(string[] args)
         {
+            MainAsync().GetAwaiter().GetResult();
+            ReadKey();
+        }
+
+        static async Task MainAsync()
+        {
             using (var simulator = new QuantumSimulator())
             {
-                RunBitFlip(simulator);
-                RunHadamard(simulator);
+                await RunBitFlip(simulator);
+                await RunHadamard(simulator);
             }
-
-            Console.ReadKey();
         }
 
-        static void RunBitFlip(QuantumSimulator simulator)
+        static async Task RunBitFlip(QuantumSimulator simulator)
         {
-            var bf1 = BitFlip.Run(simulator, true).Result;
-            Console.WriteLine($"BitFlip ({true}) produces ({bf1})!");
+            var bf1 = await BitFlip.Run(simulator, true);
+            WriteLine($"BitFlip {true.ToQubitNotation()} produces {bf1.ToQubitNotation()}");
             var bf2 = BitFlip.Run(simulator, false).Result;
-            Console.WriteLine($"BitFlip ({false}) produces ({bf2})!");
+            WriteLine($"BitFlip {false.ToQubitNotation()} produces {bf2.ToQubitNotation()}");
         }
 
-        static void RunHadamard(QuantumSimulator simulator)
+        static async Task RunHadamard(QuantumSimulator simulator)
         {
-            Dictionary<bool, int> results1 = new Dictionary<bool, int>();
+            var results1 = new Dictionary<bool, int>();
             for (int i = 0; i < 10000; i++)
             {
-                var h1 = Hadamard.Run(simulator, true).Result;
+                var h1 = await Hadamard.Run(simulator, true);
                 if (results1.ContainsKey(h1))
                 {
                     results1[h1]++;
@@ -42,10 +48,10 @@ namespace Quantum.Introduction
             }
             foreach (var result in results1.Keys)
             {
-                Console.WriteLine($"Hadamard of ({true}) is ({result}): {results1[result]} times");
+                WriteLine($"Hadamard of {true.ToQubitNotation()} produces {result.ToQubitNotation()} {results1[result]} times");
             }
 
-            Dictionary<bool, int> results2 = new Dictionary<bool, int>();
+            var results2 = new Dictionary<bool, int>();
             for (int i = 0; i < 10000; i++)
             {
                 var h2 = Hadamard.Run(simulator, false).Result;
@@ -60,7 +66,7 @@ namespace Quantum.Introduction
             }
             foreach (var result in results2.Keys)
             {
-                Console.WriteLine($"Hadamard of ({false}) is ({result}): {results2[result]} times");
+                WriteLine($"Hadamard of {false.ToQubitNotation()} produces {result.ToQubitNotation()} {results2[result]} times");
             }
         }
     }

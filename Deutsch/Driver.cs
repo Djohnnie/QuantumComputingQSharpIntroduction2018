@@ -1,43 +1,50 @@
-﻿using Microsoft.Quantum.Simulation.Simulators;
-using System;
+﻿using System;
+using System.Threading.Tasks;
+using Microsoft.Quantum.Simulation.Simulators;
+using Tools;
 
-namespace Quantum.Deutsch
+namespace Deutsch
 {
     class Driver
     {
         static void Main(string[] args)
         {
+            MainAsync().GetAwaiter().GetResult();
+            Console.ReadKey();
+        }
+
+        static async Task MainAsync()
+        {
             using (var simulator = new QuantumSimulator())
             {
-                RunDeutschTestConstantZero(simulator);
-                RunDeutschTestConstantOne(simulator);
-                RunDeutschTestIdentity(simulator);
-                RunDeutschTestNegation(simulator);
-                Console.ReadKey();
+                await RunDeutschTestConstantZero(simulator);
+                await RunDeutschTestConstantOne(simulator);
+                await RunDeutschTestIdentity(simulator);
+                await RunDeutschTestNegation(simulator);
             }
         }
 
-        private static void RunDeutschTestConstantZero(QuantumSimulator simulator)
+        private static async Task RunDeutschTestConstantZero(QuantumSimulator simulator)
         {
-            var result = DeutschTestConstantZero.Run(simulator).Result;
+            var result = await DeutschTestConstantZero.Run(simulator);
             CheckResult(result, "Constant-Zero");
         }
 
-        private static void RunDeutschTestConstantOne(QuantumSimulator simulator)
+        private static async Task RunDeutschTestConstantOne(QuantumSimulator simulator)
         {
-            var result = DeutschTestConstantOne.Run(simulator).Result;
+            var result = await DeutschTestConstantOne.Run(simulator);
             CheckResult(result, "Constant-One");
         }
-        
-        private static void RunDeutschTestIdentity(QuantumSimulator simulator)
+
+        private static async Task RunDeutschTestIdentity(QuantumSimulator simulator)
         {
-            var result = DeutschTestIdentity.Run(simulator).Result;
+            var result = await DeutschTestIdentity.Run(simulator);
             CheckResult(result, "Identity");
         }
 
-        private static void RunDeutschTestNegation(QuantumSimulator simulator)
+        private static async Task RunDeutschTestNegation(QuantumSimulator simulator)
         {
-            var result = DeutschTestNegation.Run(simulator).Result;
+            var result = await DeutschTestNegation.Run(simulator);
             CheckResult(result, "Negation");
         }
 
@@ -45,15 +52,15 @@ namespace Quantum.Deutsch
         {
             if (result.Item1 && result.Item2)
             {
-                Console.WriteLine($"The {operation} function is CONSTANT");
+                Console.WriteLine($"The {operation} function is CONSTANT ({result.ToQubitNotation()})");
             }
             else if (!result.Item1 && result.Item2)
             {
-                Console.WriteLine($"The {operation} function is VARIABLE");
+                Console.WriteLine($"The {operation} function is VARIABLE ({result.ToQubitNotation()})");
             }
             else
             {
-                Console.WriteLine("SOMETHING IS WRONG!!!");
+                Console.WriteLine($"SOMETHING IS WRONG  ({result.ToQubitNotation()})");
             }
         }
     }

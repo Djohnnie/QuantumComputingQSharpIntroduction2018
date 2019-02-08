@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28010.2046
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Introduction", "Introduction\Introduction.csproj", "{4C036C9A-604F-4D44-8CC5-6BA6BC31E030}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Introduction", "Introduction\Introduction.csproj", "{4C036C9A-604F-4D44-8CC5-6BA6BC31E030}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1. Introduction", "1. Introduction", "{B5D8C80F-E7E9-4496-B67F-7B3A66144BF2}"
 EndProject
@@ -13,11 +13,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3. Entanglement", "3. Entan
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4. Teleportation", "4. Teleportation", "{60143F71-E715-4F8F-B4CF-67E0D7B60234}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Deutsch", "Deutsch\Deutsch.csproj", "{6FDB5BFF-BB75-4388-B062-5C1E710FDDBC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Deutsch", "Deutsch\Deutsch.csproj", "{6FDB5BFF-BB75-4388-B062-5C1E710FDDBC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Entanglement", "Entanglement\Entanglement.csproj", "{43F5A153-73A8-4059-8338-5CAC16F42F05}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Entanglement", "Entanglement\Entanglement.csproj", "{43F5A153-73A8-4059-8338-5CAC16F42F05}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Teleportation", "Teleportation\Teleportation.csproj", "{829ECEAB-DC36-4942-BE73-0C3510BFCBCA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Teleportation", "Teleportation\Teleportation.csproj", "{829ECEAB-DC36-4942-BE73-0C3510BFCBCA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "0. Common", "0. Common", "{6C9F4F9A-24F9-4E38-A0C0-BCE710967E97}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tools", "Tools\Tools.csproj", "{AA06B872-65E8-41F8-BDD4-4E380E640F4A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,6 +45,10 @@ Global
 		{829ECEAB-DC36-4942-BE73-0C3510BFCBCA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{829ECEAB-DC36-4942-BE73-0C3510BFCBCA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{829ECEAB-DC36-4942-BE73-0C3510BFCBCA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AA06B872-65E8-41F8-BDD4-4E380E640F4A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AA06B872-65E8-41F8-BDD4-4E380E640F4A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AA06B872-65E8-41F8-BDD4-4E380E640F4A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AA06B872-65E8-41F8-BDD4-4E380E640F4A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -50,6 +58,7 @@ Global
 		{6FDB5BFF-BB75-4388-B062-5C1E710FDDBC} = {0FCC9C59-6FFA-4335-9D04-B57D53CFFC26}
 		{43F5A153-73A8-4059-8338-5CAC16F42F05} = {09256FC2-3D8B-4B05-9802-0AD0963BECE7}
 		{829ECEAB-DC36-4942-BE73-0C3510BFCBCA} = {60143F71-E715-4F8F-B4CF-67E0D7B60234}
+		{AA06B872-65E8-41F8-BDD4-4E380E640F4A} = {6C9F4F9A-24F9-4E38-A0C0-BCE710967E97}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {242E17A6-9F0E-4754-9800-EEAAB798E4DC}
